@@ -3,26 +3,37 @@ package calcEngineV2;
 public class calcEngineV2 {
 
     public static void main(String[] args) {
-        double val1 = 100.0d, val2 = 50.0d, result;
-        char opCode = 'm';
+    	double[] valLeft = {100.0d, 25.0d, 225.0d, 11.0d};
+    	double[] valRight = {50.0d, 92.0d, 17.0d, 3.0d};
+        char[] opCodes = {'d', 'a', 's', 'm'};
+        double[] result = new double[opCodes.length]; 
         
-        if(opCode == 'a')
-        	result = val1 + val2;
-        else if (opCode == 's') {
-        	result = val1 - val2;
-		}
-        else if (opCode == 'd') {
-			result = ( val2 != 0) ? val1/val2 : 0.0d; 
-		}
-        else if (opCode == 'm') {
-			result = val1 * val2;
-		}
-        else {
-			System.out.println(" b³¹d - niew³aœciwy rozkaz operacji! ");
-			result = 0.0d;
+        for(int i = 0; i < opCodes.length; i++) {
+        	switch (opCodes[i]) {
+			case 'a':
+				result[i] = valLeft[i] + valRight[i];
+				break;
+			case 's':
+				result[i] = valLeft[i] - valRight[i];
+				break;
+			case 'd':
+				result[i] = valLeft[i] / valRight[i];
+				break;
+			case 'm':
+				result[i] = valLeft[i] * valRight[i];
+				break;
+			default:
+				System.out.println(" b³¹d - niew³aœciwy rozkaz operacji! ");
+				result[i] = 0.0d;
+				break;
+			}
+           }
+        
+        for (double  wynik : result) {
+        	System.out.print("wynik = ");
+			System.out.println(wynik);
 		}
         
-        System.out.println(" Twój wynik to " + result);
 	// write your code here
     }
 }
